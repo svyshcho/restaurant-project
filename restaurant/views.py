@@ -1,5 +1,8 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
 from django.views import generic
+
+from restaurant.forms import DishTypeCreationForm
 from restaurant.models import DishType, Dish, Cook
 
 
@@ -39,3 +42,14 @@ class FoodListView(generic.ListView):
         context["dish_type_list"] = DishType.objects.all()
         return context
 
+
+class FoodDetailView(generic.DetailView):
+    template_name = "restaurant/dish_detail.html"
+    context_object_name = "dish"
+    model = Dish
+
+
+class DishTypeCreateView(generic.CreateView):
+    form_class = DishTypeCreationForm
+    success_url = reverse_lazy("catalog:index")
+    template_name = "restaurant/catalog_create.html"

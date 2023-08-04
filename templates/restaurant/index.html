@@ -2,4 +2,7 @@
 {% block content %}
   <h3>Main page</h3>
   <p>Num of Cookers: {{ num_cookers }}</p>
+  <p>Num of Dish Tpes: {{ num_dish_types }}
+    <a href="{% url 'restaurant:category-create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create Dish Type</a></p>
+  <p>Num of Cookers: {{ num_cookers }}</p>
 {% endblock %}
