@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-list">
+  <h3>{{ dish_type.name.capitalize }} List:</h3>
+  <ul class="dish-list">
+    {% for dish in dishes_list %}
+      <li class="dish-item">
+        {{ dish_type.name.capitalize }} name: {{ dish.name }}, price: {{ dish.price }}
+        <a href="#" class="detail-link">Detail</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+{#{% url 'catalog:food-detail' pk=dish.id%}#}

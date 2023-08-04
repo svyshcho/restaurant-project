@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'catalog:index' %}">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
@@ -18,7 +18,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           {% for dish_type in dish_type_list %}
-            <a class="dropdown-item" href="#">{{ dish_type.name.upper }}</a>
+            <a class="dropdown-item" href="{% url 'catalog:food-list' pk=dish_type.id%}">{{ dish_type.name.upper }}</a>
           {% endfor %}
         </div>
       </li>
