@@ -2,9 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
-from restaurant.forms import DishTypeCreationForm, DishCreationForm
+from restaurant.forms import DishTypeCreationForm, DishCreationForm, CookerCreationForm
 from restaurant.models import DishType, Dish, Cook
-
+from django.contrib.auth import views
 
 def index(request):
     num_dish_types = DishType.objects.count()
@@ -48,10 +48,7 @@ class FoodDetailView(generic.DetailView):
     context_object_name = "dish"
     model = Dish
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["dish_type_list"] = DishType.objects.all()
-        return context
+
 
 
 class DishTypeCreateView(generic.CreateView):
@@ -59,10 +56,6 @@ class DishTypeCreateView(generic.CreateView):
     success_url = reverse_lazy("catalog:index")
     template_name = "restaurant/catalog_create.html"
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["dish_type_list"] = DishType.objects.all()
-        return context
 
 
 class DishCreateView(generic.CreateView):
@@ -70,7 +63,24 @@ class DishCreateView(generic.CreateView):
     success_url = reverse_lazy("catalog:index")
     template_name = "restaurant/dish_create.html"
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["dish_type_list"] = DishType.objects.all()
-        return context
+
+
+
+class CookerCreateView(generic.CreateView):
+    model = Cook
+    form_class = CookerCreationForm
+    template_name = "registration/sign_in.html"
+    success_url = reverse_lazy("login")
+
+
+
+class CookerDetailView(generic.DetailView):
+    model = Cook
+    template_name = "restaurant/cooker_detail.html"
+
+
+class FoodUpdateView(generic.UpdateView):
+    model = Dish
+    success_url = reverse_lazy("catalog:food-detail")
+    template_name = "restaurant/dish_form.html"
+
