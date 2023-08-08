@@ -4,5 +4,6 @@
   <p>Num of Cookers: {{ num_cookers }}</p>
   <p>Num of Dish Tpes: {{ num_dish_types }}
     <a href="{% url 'restaurant:category-create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create Dish Type</a></p>
-  <p>Num of Cookers: {{ num_cookers }}</p>
+  <p>Num of Dishes: {{ num_dishes }}
+  <a href="{% url 'restaurant:dish-create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create Dish</a></p></p>
 {% endblock %}

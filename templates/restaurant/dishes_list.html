@@ -6,7 +6,7 @@
     {% for dish in dishes_list %}
       <li class="dish-item">
         {{ dish_type.name.capitalize }} name: {{ dish.name }}, price: {{ dish.price }}
-        <a href="#" class="detail-link">Detail</a>
+        <a href="{% url 'catalog:food-detail' pk=dish.id %}" class="detail-link">Detail</a>
       </li>
     {% endfor %}
   </ul>

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 
-from restaurant.forms import DishTypeCreationForm
+from restaurant.forms import DishTypeCreationForm, DishCreationForm
 from restaurant.models import DishType, Dish, Cook
 
 
@@ -48,8 +48,29 @@ class FoodDetailView(generic.DetailView):
     context_object_name = "dish"
     model = Dish
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["dish_type_list"] = DishType.objects.all()
+        return context
+
 
 class DishTypeCreateView(generic.CreateView):
     form_class = DishTypeCreationForm
     success_url = reverse_lazy("catalog:index")
     template_name = "restaurant/catalog_create.html"
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["dish_type_list"] = DishType.objects.all()
+        return context
+
+
+class DishCreateView(generic.CreateView):
+    form_class = DishCreationForm
+    success_url = reverse_lazy("catalog:index")
+    template_name = "restaurant/dish_create.html"
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["dish_type_list"] = DishType.objects.all()
+        return context

@@ -1,3 +1,6 @@
 .idea/
 venv/
 img.png
+restaurant/__pycache__/
+restaurant/migrations/
+restaurant_service/__pycache__/
