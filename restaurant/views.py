@@ -49,21 +49,16 @@ class FoodDetailView(generic.DetailView):
     model = Dish
 
 
-
-
 class DishTypeCreateView(generic.CreateView):
     form_class = DishTypeCreationForm
     success_url = reverse_lazy("catalog:index")
     template_name = "restaurant/catalog_create.html"
 
 
-
 class DishCreateView(generic.CreateView):
     form_class = DishCreationForm
     success_url = reverse_lazy("catalog:index")
-    template_name = "restaurant/dish_create.html"
-
-
+    template_name = "restaurant/dish_form.html"
 
 
 class CookerCreateView(generic.CreateView):
@@ -73,14 +68,18 @@ class CookerCreateView(generic.CreateView):
     success_url = reverse_lazy("login")
 
 
-
 class CookerDetailView(generic.DetailView):
     model = Cook
     template_name = "restaurant/cooker_detail.html"
 
 
 class FoodUpdateView(generic.UpdateView):
+    form_class = DishCreationForm
     model = Dish
-    success_url = reverse_lazy("catalog:food-detail")
+    success_url = reverse_lazy("catalog:index")
     template_name = "restaurant/dish_form.html"
 
+
+class FoodDeleteView(generic.DeleteView):
+    model = Dish
+    success_url = reverse_lazy("catalog:index")
