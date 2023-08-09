@@ -2,7 +2,7 @@
   {% load crispy_forms_filters %}
 {% block content %}
 <div class="container-list">
-  <h3>{{ dish_type.name.capitalize }} List:</h3>
+  <h3><a href="{% url 'restaurant:dish-create' %}"><button type="button" class="btn btn-primary">Create Dish</button></a> {{ dish_type.name.capitalize }} List:</h3>
   {% include "includes/search.html" %}
   <ul class="dish-list">
     {% for dish in dishes_list %}
