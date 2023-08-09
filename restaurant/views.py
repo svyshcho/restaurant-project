@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
-
 from restaurant.forms import DishTypeCreationForm, DishCreationForm, CookerCreationForm
 from restaurant.models import DishType, Dish, Cook
 from django.contrib.auth import views
+
 
 def index(request):
     num_dish_types = DishType.objects.count()
@@ -31,7 +31,6 @@ class FoodListView(generic.ListView):
     def get_queryset(self):
         dish_type = self.kwargs["pk"]
         queryset = Dish.objects.filter(dish_type__id=dish_type)
-
         return queryset
 
     def get_context_data(self, *, object_list=None, **kwargs):
