@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from restaurant.forms import DishTypeCreationForm, DishCreationForm, CookerCreationForm
 from restaurant.models import DishType, Dish, Cook
-from django.contrib.auth import views
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def index(request):
@@ -48,13 +48,13 @@ class FoodDetailView(generic.DetailView):
     model = Dish
 
 
-class DishTypeCreateView(generic.CreateView):
+class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = DishTypeCreationForm
     success_url = reverse_lazy("catalog:index")
     template_name = "restaurant/catalog_create.html"
 
 
-class DishCreateView(generic.CreateView):
+class DishCreateView(LoginRequiredMixin, generic.CreateView):
     form_class = DishCreationForm
     success_url = reverse_lazy("catalog:index")
     template_name = "restaurant/dish_form.html"
@@ -72,13 +72,13 @@ class CookerDetailView(generic.DetailView):
     template_name = "restaurant/cooker_detail.html"
 
 
-class FoodUpdateView(generic.UpdateView):
+class FoodUpdateView(LoginRequiredMixin, generic.UpdateView):
     form_class = DishCreationForm
     model = Dish
     success_url = reverse_lazy("catalog:index")
     template_name = "restaurant/dish_form.html"
 
 
-class FoodDeleteView(generic.DeleteView):
+class FoodDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Dish
     success_url = reverse_lazy("catalog:index")
