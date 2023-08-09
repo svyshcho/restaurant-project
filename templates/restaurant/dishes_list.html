@@ -1,7 +1,9 @@
 {% extends "base.html" %}
+  {% load crispy_forms_filters %}
 {% block content %}
 <div class="container-list">
   <h3>{{ dish_type.name.capitalize }} List:</h3>
+  {% include "includes/search.html" %}
   <ul class="dish-list">
     {% for dish in dishes_list %}
       <li class="dish-item">
@@ -10,6 +12,6 @@
       </li>
     {% endfor %}
   </ul>
+{% include "includes/pagination.html" %}
 </div>
 {% endblock %}
-{#{% url 'catalog:food-detail' pk=dish.id%}#}
