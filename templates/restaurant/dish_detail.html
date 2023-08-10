@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+    <h1>Dish detail: {{ dish.name }} <a href="{% url 'catalog:food-update' pk=dish.id %}">
+      <button type="button" class="btn btn-primary">Update</button>
+    </a></h1>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Dish Name:</strong> {{ dish.name }}</li>
+      <li class="list-group-item"><strong>Dish Type:</strong> {{ dish.dish_type }}</li>
+      <li class="list-group-item"><strong>Dish Price:</strong> {{ dish.price }}</li>
+      <li class="list-group-item"><strong>Dish Description:</strong> {{ dish.description }}</li>
+      <li class="list-group-item">
+        <strong>Cookers who made this dish:</strong>
+        <ul>
+          {% for cooker in dish.cookers %}
+            <li>{{ cooker.name }}</li>
+          {% endfor %}
+        </ul>
+      </li>
+      <li class="list-group-item"><strong>Dish Delete:</strong><a href="{% url 'catalog:food-delete' pk=dish.id %}">
+        <button type="button" class="btn btn-danger">Delete</button>
+      </a></li>
+    </ul>
+  </div>
+{% endblock %}

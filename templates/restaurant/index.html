@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+  {#  <h3>Main page</h3>#}
+  {#  <p>Num of Cookers: {{ num_cookers }}</p>#}
+  {#  <p>Num of Dish Tpes: {{ num_dish_types }}#}
+  {#    <a href="{% url 'restaurant:category-create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create Dish Type</a></p>#}
+  {#  <p>Num of Dishes: {{ num_dishes }}#}
+  {#  <a href="{% url 'restaurant:dish-create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Create Dish</a></p></p>#}
+  <main role="main">
+
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1>Culinary forum</h1>
+        <p class="lead text-muted">Culinary Atelier: Sharing and Inspiring with Delicacies
+        <p>
+      </div>
+    </section>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+                   role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                   focusable="false">
+                <rect width="100%" height="100%" fill="#55595c"/>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Count of Cookers: {{ num_cookers }}</text>
+              </svg>
+
+              <div class="card-body">
+                <p class="card-text">
+                  {% if user.is_authenticated %}
+                    <p>You are one of the chefs!</p>
+                  {% else %}
+                    <p>Please register to become our chef:</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="{% url 'login' %}">
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Login</button>
+                        </a>
+                      </div>
+                    </div>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+                   role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                   focusable="false"><title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"/>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Count of Dish Types: {{ num_dish_types }}</text>
+              </svg>
+
+              <div class="card-body">
+                <p class="card-text">Create your own Food Category:
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="{% url 'restaurant:category-create' %}">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Create Dish Type</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
+                   role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                   focusable="false"><title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"/>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Count of dishes: {{ num_dishes }}</text>
+              </svg>
+
+              <div class="card-body">
+                <p class="card-text">Create your own dish: </p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="{% url 'restaurant:dish-create' %}">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Create Dish</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% endblock %}
