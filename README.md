@@ -28,5 +28,12 @@ Guide how I can set up and run your project locally:
    Run command in your terminal:
    python -m venv venv
    venv\Scripts\activate
-   pip install -r requiremetns.txt 
-4. Run coomand -> python manage.py runserver
+   pip install -r requiremetns.txt
+4. Also, You should run makemigrations to generate the migration files based on 
+   your model changes and then run migrate to apply those changes to the database. This ensures 
+   that your database schema is updated according to the changes you made to your models.
+   run this commands: python manage.py makemigrations, python manage.py migrate
+5. Run coomand -> python manage.py runserver
+
+How to use the .env:
+You need to create an .env file where you will write all the fields that are in the .env_sample file. 
