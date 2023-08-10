@@ -1,9 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
+
 from restaurant.forms import DishTypeCreationForm, DishCreationForm, CookerCreationForm, DishSearchForm
 from restaurant.models import DishType, Dish, Cook
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def index(request):

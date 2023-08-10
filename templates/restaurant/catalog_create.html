@@ -2,11 +2,11 @@
 {% load crispy_forms_filters %}
 {% block content %}
   <div class="container py-5" style="width: 40%">
-  <h3>Create Dish Type</h3>
+    <h3>Create Dish Type</h3>
     <form action="" method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <input type="submit" value="Submit">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input type="submit" value="Submit">
     </form>
   </div>
 {% endblock %}

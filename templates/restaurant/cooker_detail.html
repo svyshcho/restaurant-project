@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
   <div class="container">
-        <h1>Cooker detail:</h1>
-        <ul class="list-group">
-            <li class="list-group-item"><strong>Cooker Username: </strong> {{ cook.username }}</li>
-            <li class="list-group-item"><strong>Cooker Name: </strong> {{ cook.first_name }}</li>
-            <li class="list-group-item"><strong>Cooker Last Name: </strong> {{ cook.last_name }}</li>
-            <li class="list-group-item"><strong>Cooker Email: </strong> {{ cook.email }}</li>
-            <li class="list-group-item"><strong>Cooker experience: </strong> {{ cook.years_of_experience }}</li>
-            <li class="list-group-item">
-                <strong>Cookers' dishes:</strong>
-                <ul>
-                    {% for dish in cook.dish_set.all %}
-                        <li>{{ dish.name }}</li>
-                    {% endfor %}
-                </ul>
-            </li>
+    <h1>Cooker detail:</h1>
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Cooker Username: </strong> {{ cook.username }}</li>
+      <li class="list-group-item"><strong>Cooker Name: </strong> {{ cook.first_name }}</li>
+      <li class="list-group-item"><strong>Cooker Last Name: </strong> {{ cook.last_name }}</li>
+      <li class="list-group-item"><strong>Cooker Email: </strong> {{ cook.email }}</li>
+      <li class="list-group-item"><strong>Cooker experience: </strong> {{ cook.years_of_experience }}</li>
+      <li class="list-group-item">
+        <strong>Cookers' dishes:</strong>
+        <ul>
+          {% for dish in cook.dish_set.all %}
+            <li>{{ dish.name }}</li>
+          {% endfor %}
         </ul>
-    </div>
+      </li>
+    </ul>
+  </div>
 {% endblock %}

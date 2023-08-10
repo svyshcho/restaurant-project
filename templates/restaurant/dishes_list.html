@@ -1,17 +1,20 @@
 {% extends "base.html" %}
-  {% load crispy_forms_filters %}
+{% load crispy_forms_filters %}
 {% block content %}
-<div class="container-list">
-  <h3><a href="{% url 'restaurant:dish-create' %}"><button type="button" class="btn btn-primary">Create Dish</button></a> {{ dish_type.name.capitalize }} List:</h3>
-  {% include "includes/search.html" %}
-  <ul class="dish-list">
-    {% for dish in dishes_list %}
-      <li class="dish-item">
-        {{ dish_type.name.capitalize }} name: {{ dish.name }}, price: {{ dish.price }}
-        <a href="{% url 'catalog:food-detail' pk=dish.id %}" class="detail-link">Detail</a>
-      </li>
-    {% endfor %}
-  </ul>
-{% include "includes/pagination.html" %}
-</div>
+  <div class="container-list">
+    <h3><a href="{% url 'restaurant:dish-create' %}">
+      <button type="button" class="btn btn-primary">Create Dish</button>
+    </a> {{ dish_type.name.capitalize }} List:
+    </h3>
+    {% include "includes/search.html" %}
+    <ul class="dish-list">
+      {% for dish in dishes_list %}
+        <li class="dish-item">
+          {{ dish_type.name.capitalize }} name: {{ dish.name }}, price: {{ dish.price }}
+          <a href="{% url 'catalog:food-detail' pk=dish.id %}" class="detail-link">Detail</a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% include "includes/pagination.html" %}
+  </div>
 {% endblock %}

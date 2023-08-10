@@ -1,8 +1,9 @@
 from django import forms
-from restaurant.models import DishType, Dish, Cook
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+
+from restaurant.models import DishType, Dish, Cook
 
 
 class DishTypeCreationForm(forms.ModelForm):
@@ -26,7 +27,6 @@ class DishCreationForm(forms.ModelForm):
 
 
 class CookerCreationForm(UserCreationForm):
-
     class Meta(UserCreationForm.Meta):
         model = Cook
         fields = UserCreationForm.Meta.fields + (
