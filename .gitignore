@@ -2,7 +2,6 @@
 venv/
 static/img/img.png
 restaurant/__pycache__/
-restaurant/migrations/
 restaurant_service/__pycache__/
 .env
 __pycache__/
