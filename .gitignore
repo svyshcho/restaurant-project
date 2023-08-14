@@ -1,8 +1,8 @@
 .idea/
 venv/
-static/img/img.png
 restaurant/__pycache__/
 restaurant_service/__pycache__/
 .env
 __pycache__/
 db.sqlite3
+staticfiles/
